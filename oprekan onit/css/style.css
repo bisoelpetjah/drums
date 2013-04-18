@@ -1,6 +1,6 @@
 #slideshow #slideshowWindow {
 	width:100%;
-	height:700px;
+	height:650px;
 	max-width: 1920px;
 	margin:0;
 	padding:0;
@@ -10,14 +10,14 @@
 
 #slideshow #slideshowWindow img{
 	width:1920px;
-	height: 620px;
+	height: 720px;
 }
 
 #slideshow #slideshowWindow .slide {
 	margin:0;
 	padding:0;
 	width:1920px; 
-	height:700px;
+	height:620px;
 	float:left;
 	position:relative;
 }
