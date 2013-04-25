@@ -2,61 +2,233 @@ var selectednavbutton;
 var selectedsubnavbutton;
 
 $(document).ready(function() {
-	$('#main').load('home.html #content');
-	loadPage('home');
+	$('#main').load('home.html');
+	selectednavbutton = '1';
+	selectedsubnavbutton = '1';
+	updateNavigation();
 });
 
-function loadPage(pagename) {
-	selectednavbutton = pagename;
-	if (pagename == 'home') {
-		$('#subnavbar').hide();
-		var targetname = selectednavbutton + '.html #content';
+function loadPage(pagenum) {
+	var sliderdiv;
+	var pos_x;
+	if (pagenum == '1' || pagenum == '2' || pagenum == '6') {
+		switch (pagenum) {
+			case ('1') : {
+				if (selectednavbutton != '1') {
+					pos_x = - $(window).width();
+					sliderdiv = $('<div id="slider" style="left:' + pos_x + 'px"></div>');
+					sliderdiv.load('home.html');
+					$('#main').after(sliderdiv);
+					$('#main').animate({
+						left:'+=' + $(window).width()
+					},800);
+					$('#slider').animate({
+						opacity:'1.0',
+						left:'+=' + $(window).width()
+					},800,function() {
+						$('#main').remove();
+						$('#slider').attr('id','main');
+						$('#main').removeAttr('style');
+					});
+				}
+				selectedsubnavbutton = '1';
+				break;
+			}
+			case ('2') : {
+				if (selectedsubnavbutton != '3') {
+					if (pagenum < selectedsubnavbutton) {
+						pos_x = - $(window).width();
+					}
+					else {
+						pos_x = $(window).width();
+					}
+					sliderdiv = $('<div id="slider" style="left:' + pos_x + 'px"></div>');
+					sliderdiv.load('test1-1.html');
+					$('#main').after(sliderdiv);
+					if (pagenum < selectedsubnavbutton) {
+						$('#main').animate({
+							left:'+=' + $(window).width()
+						},800);
+						$('#slider').animate({
+							opacity:'1.0',
+							left:'+=' + $(window).width()
+						},800,function() {
+							$('#main').remove();
+							$('#slider').attr('id','main');
+							$('#main').removeAttr('style');
+						});
+					}
+					else {
+						$('#main').animate({
+							left:'-=' + $(window).width()
+						},800);
+						$('#slider').animate({
+							opacity:'1.0',
+							left:'-=' + $(window).width()
+						},800,function() {
+							$('#main').remove();
+							$('#slider').attr('id','main');
+							$('#main').removeAttr('style');
+						});
+					}
+					selectedsubnavbutton = '3';
+				}
+				break;
+			}
+			case ('6') : {
+				if (selectedsubnavbutton != '7') {
+					if (pagenum < selectedsubnavbutton) {
+						pos_x = - $(window).width();
+					}
+					else {
+						pos_x = $(window).width();
+					}
+					sliderdiv = $('<div id="slider" style="left:' + pos_x + 'px"></div>');
+					sliderdiv.load('test2-1.html');
+					$('#main').after(sliderdiv);
+					if (pagenum < selectedsubnavbutton) {
+						$('#main').animate({
+							left:'+=' + $(window).width()
+						},800);
+						$('#slider').animate({
+							opacity:'1.0',
+							left:'+=' + $(window).width()
+						},800,function() {
+							$('#main').remove();
+							$('#slider').attr('id','main');
+							$('#main').removeAttr('style');
+						});
+					}
+					else {
+						$('#main').animate({
+							left:'-=' + $(window).width()
+						},800);
+						$('#slider').animate({
+							opacity:'1.0',
+							left:'-=' + $(window).width()
+						},800,function() {
+							$('#main').remove();
+							$('#slider').attr('id','main');
+							$('#main').removeAttr('style');
+						});
+					}
+					selectedsubnavbutton = '7';
+				}
+				break;
+			}
+		}
+		selectednavbutton = pagenum;
 	}
 	else {
-		$('#subnavbar').show();
-		if (pagename == 'test1') {
-			selectedsubnavbutton = 'test1-1';
+		if (selectedsubnavbutton != pagenum) {
+			if (pagenum < selectedsubnavbutton) {
+				pos_x = - $(window).width();
+			}
+			else {
+				pos_x = $(window).width();
+			}
+			sliderdiv = $('<div id="slider" style="left:' + pos_x + 'px"></div>');
+			switch (pagenum) {
+				case ('3') : {
+					sliderdiv.load('test1-1.html');
+					selectednavbutton = '2';
+					break;
+				}
+				case ('4') : {
+					sliderdiv.load('test1-2.html');
+					selectednavbutton = '2';
+					break;
+				}
+				case ('5') : {
+					sliderdiv.load('test1-3.html');
+					selectednavbutton = '2';
+					break;
+				}
+				case ('7') : {
+					sliderdiv.load('test2-1.html');
+					selectednavbutton = '3';
+					break;
+				}
+				case ('8') : {
+					sliderdiv.load('test2-2.html');
+					selectednavbutton = '3';
+					break;
+				}
+			}
+			$('#main').after(sliderdiv);
+			if (pagenum < selectedsubnavbutton) {
+				$('#main').animate({
+					left:'+=' + $(window).width()
+				},800);
+				$('#slider').animate({
+					opacity:'1.0',
+					left:'+=' + $(window).width()
+				},800,function() {
+					$('#main').remove();
+					$('#slider').attr('id','main');
+					$('#main').removeAttr('style');
+				});
+			}
+			else {
+				$('#main').animate({
+					left:'-=' + $(window).width()
+				},800);
+				$('#slider').animate({
+					opacity:'1.0',
+					left:'-=' + $(window).width()
+				},800,function() {
+					$('#main').remove();
+					$('#slider').attr('id','main');
+					$('#main').removeAttr('style');
+				});
+			}
+			selectedsubnavbutton = pagenum;
 		}
-		else if (pagename == 'test2') {
-			selectedsubnavbutton = 'test2-1';
-		}
-		else {
-			selectedsubnavbutton = pagename;
-			selectednavbutton = pagename.substring(0,5);
-		}
-		var targetname = selectedsubnavbutton + '.html #content';
 	}
-	$('#main').load(targetname);
 	updateNavigation();
 }
 
 function updateNavigation() {
-	var buttons = $('.navbutton');
-	for (i = 0; i < buttons.length; i++) {
-		var button = buttons[i];
-		if (button.title.toLowerCase() == selectednavbutton) {
-			button.src = 'pics/test_selected.jpg';
+	switch (selectednavbutton) {
+		case ('1') : {
+			$('#subnavbar').hide();
+			break;
 		}
-		else {
-			button.src = 'pics/test.jpg';
+		case ('2') : {
+			$('#subnavbar').show();
+			$('#3').show();
+			$('#4').show();
+			$('#5').show();
+			$('#7').hide();
+			$('#8').hide();
+			break;
+		}
+		case ('6') : {
+			$('#subnavbar').show();
+			$('#3').hide();
+			$('#4').hide();
+			$('#5').hide();
+			$('#7').show();
+			$('#8').show();
+			break;
 		}
 	}
-	if (selectednavbutton != 'home') {
-		buttons = $('.subnavbutton');
-		for (i = 0; i < buttons.length; i++) {
-			var button = buttons[i];
-			if (button.title.toLowerCase().indexOf(selectednavbutton) !== -1) {
-				button.parentNode.parentNode.style.display = 'inline';
-				if (button.title.toLowerCase() == selectedsubnavbutton) {
-					button.src = 'pics/test_selected.jpg';
-				}
-				else {
-					button.src = 'pics/test.jpg';
-				}
-			}
-			else {
-				button.parentNode.parentNode.style.display = 'none';
-			}
+	var buttons = $('.navbutton');
+	for (i = 0; i < buttons.length; i++) {
+		if (selectednavbutton == buttons[i].id) {
+			buttons[i].src = 'pics/test_selected.jpg';
+		}
+		else {
+			buttons[i].src = 'pics/test.jpg';
+		}
+	}
+	buttons = $('.subnavbutton');
+	for (i = 0; i < buttons.length; i++) {
+		if (selectedsubnavbutton == buttons[i].id) {
+			buttons[i].src = 'pics/test_selected.jpg';
+		}
+		else {
+			buttons[i].src = 'pics/test.jpg';
 		}
 	}
 }
