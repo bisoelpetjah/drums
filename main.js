@@ -3,9 +3,9 @@ var selectedsubnavbutton;
 
 $(document).ready(function() {
 	$('#main').load('home.html');
-	selectednavbutton = '1';
-	selectedsubnavbutton = '1';
-	updateNavigation();
+	// selectednavbutton = '1';
+	// selectedsubnavbutton = '1';
+	// updateNavigation();
 });
 
 function loadPage(pagenum) {

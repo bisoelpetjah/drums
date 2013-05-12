@@ -8,7 +8,17 @@ body {
 	overflow:hidden;
 }
 
+#loading {
+	z-index:2;
+	top:50%;
+	left:50%;
+	margin-left:-80px;
+	margin-top:-80px;
+	position:absolute;
+}
+
 #main {
+	z-index:0;
 	left:0px;
 	width:100%;
 	height:100%;
@@ -16,6 +26,7 @@ body {
 }
 
 #slider {
+	z-index:0;
 	width:100%;
 	height:100%;
 	position:absolute;
@@ -35,14 +46,34 @@ body {
 }
 
 #navbar {
+	z-index:1;
 	width:100%;
-	height:45px;
+	height:66px;
 	background-color:#000000;
-	opacity:0.8;
+	position:absolute;
+}
+
+#mainlogo {
+	float:left;
+	margin-top:7px;
+	margin-left:40px;
+	margin-right:60px;
+	width:auto;
+	height:auto;
+}
+
+#bottombar {
+	z-index:1;
+	width:100%;
+	height:46px;
+	background-color:#000000;
+	top:100%;
+	margin-top:-46px;
 	position:absolute;
 }
 
 #subnavbar {
+	z-index:1;
 	width:100%;
 	height:45px;
 	background-color:#000000;
@@ -53,17 +84,37 @@ body {
 	border-color:#222222;
 }
 
-.nav {
+#nav {
+	float:left;
+}
+
+#nav ul {
 	list-style-type:none;
 }
 
-.nav li {
+#nav ul li {
+	float:left;
 	display:inline;
 }
 
-.navbutton, .subnavbutton {
-	max-height:100%;
-	max-width:auto;
-	padding-left:1px;
-	padding-right:1px;
+.navbutton {
+	margin-top:3px;
+	margin-left:5px;
+	margin-right:5px;
+	height:auto;
+	width:auto;
+}
+
+.navtext {
+	position:absolute;
+	top:50%;
+	margin-top:-5px;
+}
+
+#langselector {
+	position:absolute;
+	top:50%;
+	left:100%;
+	margin-left:-96px;
+	margin-top:-7px;
 }
