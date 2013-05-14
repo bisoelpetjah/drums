@@ -57,7 +57,7 @@ body {
 	float:left;
 	margin-top:7px;
 	margin-left:40px;
-	margin-right:60px;
+	margin-right:80px;
 	width:auto;
 	height:auto;
 }
@@ -88,19 +88,19 @@ body {
 	float:left;
 }
 
-#nav ul {
+#nav ul, #homenumber ul, #links ul {
 	list-style-type:none;
 }
 
-#nav ul li {
+#nav ul li, #homenumber ul li, #links ul li {
 	float:left;
 	display:inline;
 }
 
 .navbutton {
 	margin-top:3px;
-	margin-left:5px;
-	margin-right:5px;
+	margin-left:3px;
+	margin-right:3px;
 	height:auto;
 	width:auto;
 }
@@ -117,4 +117,46 @@ body {
 	left:100%;
 	margin-left:-96px;
 	margin-top:-7px;
+}
+
+#homenumber {
+	z-index:1;
+	position:absolute;
+	top:72px;
+	left:100%;
+	margin-left:-120px;
+}
+
+#homenumber img {
+	margin:2px;
+}
+
+#links {
+	z-index:1;
+	position:absolute;
+	width:322;
+	height:66;
+	top:100%;
+	left:100%;
+	margin-top:-112px;
+	margin-left:-322px;
+	background-image:url("pics/Home/BG link.png");
+}
+
+#links ul {
+	float:right;
+	margin-right:38px;
+}
+
+#links ul li {
+	margin-top:12px;
+	margin-left:2px;
+	margin-right:2px;
+}
+
+.overview {
+	position:absolute;
+	top:100%;
+	margin-top:-260px;
+	margin-left:40px;
 }
