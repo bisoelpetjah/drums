@@ -25,6 +25,11 @@ body {
 	position:absolute;
 }
 
+.loading {
+	position:absolute;
+	display:none;
+}
+
 #main {
 	z-index:0;
 	left:0px;

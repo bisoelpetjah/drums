@@ -3,12 +3,44 @@ var timer;
 
 var home1, home2, home3, drumset;
 var loader;
-var imagetoload = 18;
+var assettoload = 18;
+var progress = 0;
 
 window.onload = function() {
 	loader = $('<div> </div>');
+	$('#percent0').show();
 	loader.bind('loaded',function() {
-		imagetoload--;
+		progress++;
+		if (progress / assettoload == 1) {
+			$('#percent100').show();
+		}
+		else if (progress / assettoload >= 0.9) {
+			$('#percent90').show();
+		}
+		else if (progress / assettoload >= 0.8) {
+			$('#percent80').show();
+		}
+		else if (progress / assettoload >= 0.7) {
+			$('#percent70').show();
+		}
+		else if (progress / assettoload >= 0.6) {
+			$('#percent60').show();
+		}
+		else if (progress / assettoload >= 0.5) {
+			$('#percent50').show();
+		}
+		else if (progress / assettoload >= 0.4) {
+			$('#percent40').show();
+		}
+		else if (progress / assettoload >= 0.3) {
+			$('#percent30').show();
+		}
+		else if (progress / assettoload >= 0.2) {
+			$('#percent20').show();
+		}
+		else if (progress / assettoload >= 0.1) {
+			$('#percent10').show();
+		}
 	});
 	loader.bind('finishedloading',function() {
 		$('#loadingpage').animate({
@@ -54,7 +86,7 @@ function loadAsset() {
 	img[15] = 'pics/Home/Menu/forum hover.png';
 	img[16] = 'pics/Home/Menu/home hover.png';
 	img[17] = 'pics/Home/Menu/tips hover.png';
-	for (i = 0; i < 18; i++) {
+	for (i = 0; i < assettoload; i++) {
 		var temp = new Image();
 		temp.onload = function() {
 			loader.trigger('loaded');
@@ -73,7 +105,7 @@ function loadAsset() {
 }
 
 function waitFinishedLoading() {
-	if (imagetoload > 0) {
+	if (progress < assettoload) {
 		setTimeout(waitFinishedLoading,50);
 	}
 	else {
@@ -83,7 +115,6 @@ function waitFinishedLoading() {
 
 function loadPage(pagenum) {
 	if (pagenum != loadedPage) {
-		clearInterval(timer);
 		slideshow();
 		switch (pagenum) {
 			case (1) : {
@@ -145,6 +176,7 @@ function loadPage(pagenum) {
 }
 
 function slideshow(){
+	clearInterval(timer);
 	timer = setInterval(function() {
 		if (loadedPage == 1){
 			loadedPage = 2;		
