@@ -35,7 +35,7 @@
 					<img id="selhome" src="pics/Home/Selected menu.png" style="visibility:hidden" />
 					<img class="navtext" src="pics/Home/Menu/Home.png" style="margin-left:30px" />
 				</div></a></li>
-				<li><a href="javascript:void(0)" onclick="loadPage(4)"><div class="navbutton" onmouseover="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu/Drumset hover.png'" onmouseout="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu/Drumset.png'">
+				<li><a href="javascript:void(0)"><div class="navbutton" onmouseover="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu/Drumset hover.png'; $('#drumsetsubnav').show()" onmouseout="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu/Drumset.png'; $('#drumsetsubnav').hide()">
 					<img id="seldrum" src="pics/Home/Selected menu.png" style="visibility:hidden" />
 					<img class="navtext" src="pics/Home/Menu/Drumset.png" style="margin-left:20px" />
 				</div></a></li>
@@ -66,6 +66,25 @@
 			<a href="javascript:void(0)"><img src="pics/Home/Inggris.png" /></a>
 		</div>
 	</div>
+	<div id="drumsetsubnav" onmouseover="$(this).show();" onmouseout="$(this).hide()">
+		<ul>
+			<li><a href="javascript:void(0)" onclick="loadPage(4)"><div class="subnavbutton" onmouseover="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/drumshell hover.png'" onmouseout="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/drumshell.png'">
+				<img class="navtext" src="pics/Home/Menu Drumset/drumshell.png" style="margin-left:22px" />
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div class="subnavbutton" onmouseover="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/hardware hover.png'" onmouseout="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/hardware.png'">
+				<img class="navtext" src="pics/Home/Menu Drumset/hardware.png" style="margin-left:24px" />
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div class="subnavbutton" onmouseover="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/Drumhead hover.png'" onmouseout="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/Drumhead.png'">
+				<img class="navtext" src="pics/Home/Menu Drumset/Drumhead.png" style="margin-left:23px" />	
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div class="subnavbutton" onmouseover="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/setup hover.png'" onmouseout="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/setup.png'">
+				<img class="navtext" src="pics/Home/Menu Drumset/setup.png" style="margin-left:34px" />
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div class="subnavbutton" onmouseover="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/making hover.png'" onmouseout="this.getElementsByClassName('navtext')[0].src='pics/Home/Menu Drumset/making.png'">
+				<img class="navtext" src="pics/Home/Menu Drumset/making.png" style="margin-left:30px" />
+			</div></a></li>
+		</ul>
+	</div>
 	<div id="bottombar">
 	</div>
 	<div id="homenumber">
@@ -81,14 +100,24 @@
 			<li><a href="http://twitter.com/drumpedia" target="blank"><img src="pics/Home/Twitter.png" onmouseover="this.src='pics/Home/Hover Twitter.png'" onmouseout="this.src='pics/Home/Twitter.png'"></a></li>
 		</ul>
 	</div>
-	<!-- <div id="subnavbar">
-		<ul class="nav">
-			<li><a href="javascript:void(0)" onclick="loadPage('3')"><img id="3" class="subnavbutton" src="pics/test.jpg" title="Test1-1" /></a></li>
-			<li><a href="javascript:void(0)" onclick="loadPage('4')"><img id="4" class="subnavbutton" src="pics/test.jpg" title="Test1-2" /></a></li>
-			<li><a href="javascript:void(0)" onclick="loadPage('5')"><img id="5" class="subnavbutton" src="pics/test.jpg" title="Test1-3" /></a></li>
-			<li><a href="javascript:void(0)" onclick="loadPage('7')"><img id="7" class="subnavbutton" src="pics/test.jpg" title="Test2-1" /></a></li>
-			<li><a href="javascript:void(0)" onclick="loadPage('8')"><img id="8" class="subnavbutton" src="pics/test.jpg" title="Test2-2" /></a></li>
+	<div id="drumsetbottomnav">
+		<ul>
+			<li><a href="javascript:void(0)"><div style="width:108px; height:51px; background-image:url('pics/Drumset/Drumshell/barbawah/Material selected.png')">
+				<img id="selmaterial" src="pics/Drumset/Drumshell/barbawah/Material.png" onclick="loadPage(5)" onmouseover="this.src='pics/Drumset/Drumshell/barbawah/Material hover.png'" onmouseout="this.src='pics/Drumset/Drumshell/barbawah/Material.png'" />
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div style="width:108px; height:51px; background-image:url('pics/Drumset/Drumshell/barbawah/bearing selected.png')">
+				<img id="selbearing" src="pics/Drumset/Drumshell/barbawah/bearing.png" onclick="loadPage(6)" onmouseover="this.src='pics/Drumset/Drumshell/barbawah/bearing hover.png'" onmouseout="this.src='pics/Drumset/Drumshell/barbawah/bearing.png'" />
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div style="width:108px; height:51px; background-image:url('pics/Drumset/Drumshell/barbawah/thickness selected.png')">
+				<img id="selthickness" src="pics/Drumset/Drumshell/barbawah/thickness plain.png" onclick="loadPage(7)" onmouseover="this.src='pics/Drumset/Drumshell/barbawah/thickness hover.png'" onmouseout="this.src='pics/Drumset/Drumshell/barbawah/thickness plain.png'" />
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div style="width:108px; height:51px; background-image:url('pics/Drumset/Drumshell/barbawah/size selected.png')">
+				<img id="selsize" src="pics/Drumset/Drumshell/barbawah/size.png" onclick="loadPage(8)" onmouseover="this.src='pics/Drumset/Drumshell/barbawah/size hover.png'" onmouseout="this.src='pics/Drumset/Drumshell/barbawah/size.png'" />
+			</div></a></li>
+			<li><a href="javascript:void(0)"><div style="width:108px; height:51px; background-image:url('pics/Drumset/Drumshell/barbawah/finishing selected.png')">
+				<img id="selfinishing" src="pics/Drumset/Drumshell/barbawah/finishing.png" onclick="loadPage(9)" onmouseover="this.src='pics/Drumset/Drumshell/barbawah/finishing hover.png'" onmouseout="this.src='pics/Drumset/Drumshell/barbawah/finishing.png'" />
+			</div></a></li>
 		</ul>
-	</div> -->
+	</div>
 </body>
 </html>

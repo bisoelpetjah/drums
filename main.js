@@ -1,10 +1,12 @@
 var loadedPage;
 var timer;
 
-var home1, home2, home3, drumset;
+var home1, home2, home3, drumshell, material, bearing, hardware;
 var loader;
-var assettoload = 18;
+var assettoload = 32;
 var progress = 0;
+
+var materialpage = 1;
 
 window.onload = function() {
 	loader = $('<div> </div>');
@@ -68,10 +70,10 @@ window.onload = function() {
 
 function loadAsset() {
 	var img = new Array();
-	img[0] = 'pics/Chrysanthemum.jpg';
-	img[1] = 'pics/Desert.jpg';
-	img[2] = 'pics/Hydrangeas.jpg';
-	img[3] = 'pics/Jellyfish.jpg';
+	img[0] = 'pics/Home/BG 1.jpg';
+	img[1] = 'pics/Home/BG 1.jpg';
+	img[2] = 'pics/Home/BG 1.jpg';
+	img[3] = 'pics/Home/BG 1.jpg';
 	img[4] = 'pics/Home/Click for details.png';
 	img[5] = 'pics/Home/Click for details hover.png';
 	img[6] = 'pics/Home/Hover FB.png';
@@ -82,10 +84,24 @@ function loadAsset() {
 	img[11] = 'pics/Home/Menu/about hover.png';
 	img[12] = 'pics/Home/Menu/Artist hover.png';
 	img[13] = 'pics/Home/Menu/Contact hover.png';
-	img[14] = 'pics/Home/Menu/Drumset hover.png';
+	img[14] = 'pics/Home/Menu/drumset hover.png';
 	img[15] = 'pics/Home/Menu/forum hover.png';
 	img[16] = 'pics/Home/Menu/home hover.png';
 	img[17] = 'pics/Home/Menu/tips hover.png';
+	img[18] = 'pics/Home/Menu Drumset/drumshell.png';
+	img[19] = 'pics/Home/Menu Drumset/drumshell hover.png';
+	img[20] = 'pics/Home/Menu Drumset/hardware.png';
+	img[21] = 'pics/Home/Menu Drumset/hardware hover.png';
+	img[22] = 'pics/Home/Menu Drumset/Drumhead.png';
+	img[23] = 'pics/Home/Menu Drumset/Drumhead hover.png';
+	img[24] = 'pics/Home/Menu Drumset/setup.png';
+	img[25] = 'pics/Home/Menu Drumset/setup hover.png';
+	img[26] = 'pics/Home/Menu Drumset/making.png';
+	img[27] = 'pics/Home/Menu Drumset/making hover.png';
+	img[28] = 'pics/Drumset/BGdrumshell.png';
+	img[29] = 'pics/Drumset/Drumshell/keterangan.png';
+	img[30] = 'pics/Drumset/Drumshell/Material/up.png';
+	img[31] = 'pics/Drumset/Drumshell/Material/down.png';
 	for (i = 0; i < assettoload; i++) {
 		var temp = new Image();
 		temp.onload = function() {
@@ -96,11 +112,18 @@ function loadAsset() {
 	home1 = $('<div></div>');
 	home2 = $('<div></div>');
 	home3 = $('<div></div>');
-	drumset = $('<div></div>');
+	drumshell = $('<div></div>');
+	material = $('<div></div>');
+	bearing = $('<div></div>');
+	hardware = $('<div></div>');
+	birch = $('<div></div>');
 	home1.load('home1.html');
 	home2.load('home2.html');
 	home3.load('home3.html');
-	drumset.load('drumset.html');
+	drumshell.load('drumshell.html');
+	material.load('material.html');
+	bearing.load('bearing_edges.html');
+	hardware.load('hardware.html');
 	waitFinishedLoading();
 }
 
@@ -128,6 +151,11 @@ function loadPage(pagenum) {
 				});
 				$('#homenum3').css({
 					opacity:0.5
+				});
+				$('#drumsetbottomnav').animate({
+					opacity:'0.0'
+				},function() {
+					$('#drumsetbottomnav').hide();
 				});
 				break;
 			}
@@ -160,8 +188,27 @@ function loadPage(pagenum) {
 				break;
 			}
 			case (4) : {
-				page = drumset;
+				page = drumshell;
 				$('#homenumber').hide();
+				setTimeout(function() {
+					$('#drumsetbottomnav').show();
+					$('#drumsetbottomnav').animate({
+						opacity:'1.0'
+					},800);
+				},800);
+				break;
+			}
+			case (5) : {
+				page = material;
+				$(page).find('#full').css('top','0px');
+				materialpage = 1;
+				$('#homenumber').hide();
+				break;
+			}
+			case (6) : {
+				page = bearing;
+				$(page).find('#full').css('left','0px');
+				break;
 			}
 		}
 		if (pagenum < loadedPage) {
@@ -254,6 +301,40 @@ function loadFromRight(page) {
 	});
 }
 
+function loadFromBottom(page) {
+	page.attr('id','slider');
+	page.attr('style','top:-' + $(window).height() + 'px');
+	$('#main').after(page);
+	$('#main').animate({
+		top:'+=' + $(window).height()
+	},800);
+	$('#slider').animate({
+		opacity:'1.0',
+		top:'+=' + $(window).height()
+	},800,function() {
+		$('#main').remove();
+		$('#slider').attr('id','main');
+		$('#main').removeAttr('style');
+	});
+}
+
+function loadFromTop(page) {
+	page.attr('id','slider');
+	page.attr('style','top:' + $(window).height() + 'px');
+	$('#main').after(page);
+	$('#main').animate({
+		top:'-=' + $(window).height()
+	},800);
+	$('#slider').animate({
+		opacity:'1.0',
+		top:'-=' + $(window).height()
+	},800,function() {
+		$('#main').remove();
+		$('#slider').attr('id','main');
+		$('#main').removeAttr('style');
+	});
+}
+
 function updateNavigation() {
 	switch (loadedPage) {
 		case (1) : {
@@ -294,7 +375,60 @@ function updateNavigation() {
 			$('#selforum').attr('style','visibility:hidden');
 			$('#selcontact').attr('style','visibility:hidden');
 			$('#selabout').attr('style','visibility:hidden');
+			$('#selmaterial').show();
+			$('#selbearing').show();
+			$('#selthickness').show();
+			$('#selsize').show();
+			$('#selfinishing').show();
 			break;
 		}
+		case (5) : {
+			$('#selhome').attr('style','visibility:hidden');
+			$('#seldrum').attr('style','visibility:visible');
+			$('#selartist').attr('style','visibility:hidden');
+			$('#seltips').attr('style','visibility:hidden');
+			$('#selforum').attr('style','visibility:hidden');
+			$('#selcontact').attr('style','visibility:hidden');
+			$('#selabout').attr('style','visibility:hidden');
+			$('#selmaterial').hide();
+			$('#selbearing').show();
+			$('#selthickness').show();
+			$('#selsize').show();
+			$('#selfinishing').show();
+			break;
+		}
+		case (6) : {
+			$('#selhome').attr('style','visibility:hidden');
+			$('#seldrum').attr('style','visibility:visible');
+			$('#selartist').attr('style','visibility:hidden');
+			$('#seltips').attr('style','visibility:hidden');
+			$('#selforum').attr('style','visibility:hidden');
+			$('#selcontact').attr('style','visibility:hidden');
+			$('#selabout').attr('style','visibility:hidden');
+			$('#selmaterial').show();
+			$('#selbearing').hide();
+			$('#selthickness').show();
+			$('#selsize').show();
+			$('#selfinishing').show();
+			break;
+		}
+	}
+}
+
+function materialNext() {
+	if (materialpage == 1) {
+		materialpage = 2;
+		$('#full').animate({
+			top:'-=' + $(window).height()
+		},800) ;
+	}
+}
+
+function materialPrev() {
+	if (materialpage == 2) {
+		materialpage = 1;
+		$('#full').animate({
+			top:'+=' + $(window).height()
+		},800) ;
 	}
 }
